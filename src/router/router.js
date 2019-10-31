@@ -3,6 +3,7 @@ import Home from '../views/Home.vue'
  const routes = [
   {
     path: '/',
+    alias: '/home-page',
     name: 'home',
     component: Home
   },
@@ -16,7 +17,31 @@ import Home from '../views/Home.vue'
   },
   {
     path: '/argument/:name',
+    name: 'argument',
     component: () => import('@/views/Argument.vue')
+  },
+  {
+    path: '/parent',
+    component: () => import('@/views/Parent.vue'),
+    children: [{
+      path: 'child',
+      component: () => import('@/views/Child.vue')
+    }]
+  },
+  {
+    path: '/named-view',
+    components: {
+      default: () => import('@/views/Child.vue'),
+      email: () => import('@/views/Email.vue'),
+      tel: () => import('@/views/Tel.vue')
+    }
+  },
+  {
+    path: '/main',
+    // redirect: '/'
+    redirect: to => {
+      return '/'
+    }
   }
 ]
 
