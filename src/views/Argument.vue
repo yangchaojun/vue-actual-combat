@@ -1,14 +1,21 @@
 <template>
   <div>
     <h1>动态路由</h1>
-    {{ $route.params.name }}
+    <p>路由参数形式：{{ $route.params.name }}</p>
+    <p>组件属性形式：{{ name }}</p>
   </div>
 </template>
 
 <script>
 export default {
-  mounted() {
-    console.log(this.$route);
+  props: {
+    name: {
+      type: String,
+      default: 'yangchaojun'
+    }
+  },
+  beforeRouteUpdate (to, from, next) {
+    console.log(to.name, from.name)
   }
 }
 </script>

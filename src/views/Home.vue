@@ -15,6 +15,19 @@ export default {
   components: {
     HelloWorld
   },
+  beforeRouteEnter (to, from, next) {
+    next(vm => {
+      console.log(vm);
+    })
+  },
+  beforeRouteLeave (to, from, next ) {
+    const answer = window.confirm('Do you really want to leave? you have unsaved changes!')
+    if (answer) {
+      next()
+    } else {
+      next(false)
+    }
+  },
   methods: {
     handleClick(type) {
       if(type === 'back') this.$router.go(-1) // this.$router.back()
