@@ -3,7 +3,7 @@
     <a-input v-model="inputValue"/>
     <!-- <p>{{ inputValue }}</p> -->
     <a-message :message="inputValue"/>
-    <!-- <p>appName: {{ appName }}</p> -->
+    <p>appName: {{ appName }}- lastLetter: {{lastLetterOfAppName}}</p>
     <p>userName: {{ userName }}</p>
   </div>
 </template>
@@ -11,7 +11,7 @@
 <script>
 import AInput from '@/components/AInput.vue'
 import AMessage from '@/components/AMessage.vue'
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 // import { createNamespacedHelpers } from 'vuex'
 // const { mapState }  = createNamespacedHelpers('user')
 export default {
@@ -24,6 +24,9 @@ export default {
     // ...mapState([
     //   'userName'
     // ])
+    ...mapGetters([
+      'lastLetterOfAppName'
+    ]),
     ...mapState({
       appName: state => state.appName,
     }),
@@ -40,6 +43,9 @@ export default {
   components: {
     AInput,
     AMessage
+  },
+  mounted () {
+    console.log(this.$store.getters.lastLetterOfAppName);
   }
 }
 </script>
