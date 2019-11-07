@@ -3,8 +3,8 @@
     <a-input v-model="inputValue"/>
     <!-- <p>{{ inputValue }}</p> -->
     <a-message :message="inputValue"/>
-    <p>appName: {{ appName }}- lastLetter: {{lastLetterOfAppName}}</p>
-    <p>userName: {{ userName }}</p>
+    <!-- <p>appName: {{ appName }}, the lastLetter is {{lastLetter}}</p> -->
+    <p>userName: {{ userName }},the firstLetter is {{firstLetter}}</p>
   </div>
 </template>
 
@@ -13,7 +13,7 @@ import AInput from '@/components/AInput.vue'
 import AMessage from '@/components/AMessage.vue'
 import { mapState, mapGetters } from 'vuex'
 // import { createNamespacedHelpers } from 'vuex'
-// const { mapState }  = createNamespacedHelpers('user')
+// const {mapState, mapGetters }  = createNamespacedHelpers('user')
 export default {
   data () {
     return {
@@ -24,15 +24,18 @@ export default {
     // ...mapState([
     //   'userName'
     // ])
+    // ...mapGetters([
+    //   'lastLetterOfAppName'
+    // ]),
     ...mapGetters([
-      'lastLetterOfAppName'
+      'firstLetter'
     ]),
+    // ...mapState({
+    //   appName: state => state.appName,
+    // }),
     ...mapState({
-      appName: state => state.appName,
-    }),
-    ...mapState('user', [
-      'userName'
-    ])
+      userName: state => state.user.userName
+    })
     // appName () {
     //   return this.$store.state.appName // 根文件下state
     // },
