@@ -4,12 +4,14 @@ const state = {
 
 const getters = {
   firstLetter: state => {
-    return state.userName.slice(-1);
+    return state.userName.substr(0,1);
   }
 }
 
 const mutations = {
-
+  SET_USER_NAME: (state, param) => {
+    state.userName = param
+  }
 }
 
 const actions = {
