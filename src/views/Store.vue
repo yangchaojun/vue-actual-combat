@@ -5,17 +5,18 @@
     <a-message :message="inputValue"/>
     <p>appName: {{ appName }}, the lastLetter is {{lastLetterOfAppName}}</p>
     <p>userName: {{ userName }},the firstLetter is {{firstLetter}}</p>
-    <button @click="handleCommit">点击提交commit</button>
-    <button @click="handleAddNewState">点击在store中添加新属性</button>
-    <button @click="handleSetUserName">设置userName</button>
-    {{appVersion}}
+    <p><button @click="handleCommit">点击提交commit</button></p>
+    <p><button @click="handleAddNewState">点击在store中添加新属性</button></p>
+    <p><button @click="handleSetUserName">设置userName</button></p>
+    <p><button @click="handleUpdateAppName">更新AppName</button></p>
+    <p>{{appVersion}}</p>
   </div>
 </template>
 
 <script>
 import AInput from '@/components/AInput.vue'
 import AMessage from '@/components/AMessage.vue'
-import { mapState, mapGetters, mapMutations } from 'vuex'
+import { mapState, mapGetters, mapMutations, mapActions } from 'vuex'
 // import { createNamespacedHelpers } from 'vuex'
 // const {mapState, mapGetters }  = createNamespacedHelpers('user')
 export default {
@@ -61,6 +62,9 @@ export default {
       'SET_APP_NAME',
       'SET_USER_NAME'
     ]),
+    ...mapActions([
+      'getAppName'
+    ]),
     handleCommit() {
       // this.$store.commit('SET_APP_NAME', {
       //   appName: 'newAppName'
@@ -74,8 +78,11 @@ export default {
     handleAddNewState() {
       this.$store.commit('SET_APP_VERSION')
     },
-     handleSetUserName() {
+    handleSetUserName() {
        this.SET_USER_NAME('Lison')
+    },
+    handleUpdateAppName() {
+       this.getAppName()
     }
   }
 }
