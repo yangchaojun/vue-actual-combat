@@ -1,6 +1,7 @@
 {
   "name": "vue-actual-combat",
   "version": "0.1.0",
+  "author": "yangchaojunxs@126.com",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",

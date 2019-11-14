@@ -66,6 +66,11 @@ import Home from '../views/Home.vue'
     component: () => import('@/views/Store.vue')
   },
   {
+    path: '/count-to',
+    name: 'countTo',
+    component: () => import('@/views/count-to.vue')
+  },
+  {
     path: '*',
     component: () => import('@/views/404.vue')
   }
