@@ -1,8 +1,9 @@
 import axios from './index'
 
-export const getUserInfo = () => {
+export const getUserInfo = (data) => {
   return axios.request({
-    url: '/getUserInfo',
-    method: 'POST'
+    url: '/api/getUserInfo',
+    method: 'POST',
+    data
   })
 }

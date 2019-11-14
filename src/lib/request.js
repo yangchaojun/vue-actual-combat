@@ -1,6 +1,5 @@
 import axios from 'axios'
 import { baseURL } from '@/config/index'
-import { spawn } from 'child_process'
 
 class HttpRequest {
   constructor(baseUrl = baseURL) {
@@ -12,10 +11,11 @@ class HttpRequest {
     instance.interceptors.request.use(config => {
       // 可以添加全局Loading效果
       // iView组件中 Spin.show()
-      if (!(this.queue.keys().length > 0)) { // 若果当前还有请求，不显示全局Loading
+      if (!(Object.keys(this.queue).length > 0)) { // 若果当前还有请求，不显示全局Loading
         // Span.show()
       }
       this.queue[url] = true;
+      return config
     }, error => {
       return Promise.reject(error)
     })

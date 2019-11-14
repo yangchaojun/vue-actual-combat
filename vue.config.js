@@ -11,6 +11,16 @@ module.exports = {
   },
   productionSourceMap: false, // 打包时不生成.map文件
   devServer: {
-    proxy: 'http://localhost:4000'
+    proxy: {
+      '/api': {
+        target: "localhost:3000", //http://127.0.0.1:3000
+        ws: true,
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': ''
+        },
+        "secure": false
+      },
+    }
   }
 }

@@ -3,18 +3,21 @@
     <button @click="handleClick('back')">回到上一页</button>
     <button @click="handleClick('push')">跳转到parent</button>
     <button @click="handleClick('replace')">替换到argument</button>
+    <!-- <button><button @click="handleGetUserInfo">获取用户信息</button></p> -->
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue'
+import { getUserInfo } from '@/api/user'
 
 export default {
   name: 'home',
   components: {
     HelloWorld
   },
+
   beforeRouteEnter (to, from, next) {
     next(vm => {
       console.log(vm);
@@ -43,6 +46,13 @@ export default {
           }
         })
       }
+    },
+    handleGetUserInfo() {
+      getUserInfo({
+        userId: 21
+      }).then(res => {
+        console.log(`res:${res}`);
+      })
     }
   }
 }
