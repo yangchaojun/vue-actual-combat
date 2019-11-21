@@ -18,6 +18,11 @@ import Home from '../views/Home.vue'
     component: () => import('@/views/Login.vue')
   },
   {
+    path: '/form-page',
+    name: 'form-page',
+    component: () => import('@/views/form-page.vue')
+  },
+  {
     path: '/about',
     name: 'about',
     // route level code-splitting
