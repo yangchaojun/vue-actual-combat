@@ -1,6 +1,6 @@
 import Home from '../views/Home.vue'
 
- const routes = [
+const routes = [
   {
     path: '/',
     alias: '/home-page',
@@ -21,6 +21,11 @@ import Home from '../views/Home.vue'
     path: '/form-page',
     name: 'form-page',
     component: () => import('@/views/form-page.vue')
+  },
+  {
+    path: '/echarts',
+    name: 'echarts',
+    component: () => import('@/views/echarts.vue')
   },
   {
     path: '/about',
